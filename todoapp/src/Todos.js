@@ -1,19 +1,19 @@
 import React from 'react';
 
 const Todos = (props) => {
-    const {todos, deleteTask}=props;
-    const todoList = todos.length?(todos.map(todo => {
-        return (
-            <div key={todo.id}>
-                <span onClick={()=>deleteTask(todo.id)}>{todo.task}</span>
+    const { todos, deleteTask } = props;
+    const todoList = todos.length ? (todos.map(todo => {
+        return (//if tasks are available display them
+            <div onClick={() => deleteTask(todo.id)} className="collection-item" key={todo.id}>
+                <span >{todo.task}</span>
             </div>
         )
     })
-    ):(
-        <p>you have no tasks left</p>
-    )
+    ) : (//if no task left show message
+            <p className="center">you have no tasks left</p>
+        )
     return (
-        <div >
+        <div className="collection" >
             {todoList}
         </div>
     )
